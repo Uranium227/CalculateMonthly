@@ -19,6 +19,31 @@ def calculate_total_revenue(number_of_rows): #calculate the total revenue by sum
 
     return total_revenue
 
-print(total_salary)
-print(len(total_salary))
-print(calculate_total_revenue(len(total_salary)))
+def find_the_most_expensive_item(): #find the most expensive item in the dataset
+    max_price = df['UnitPrice'].max() #get the maximum unit price from the dataset
+    most_expensive_item = df[df['UnitPrice'] == max_price] #filter the dataframe to get the row with the maximum unit price
+
+    return most_expensive_item
+
+def the_most_expensive_item(): #find the most expensive item in the dataset
+    max_price = df['UnitPrice'].max() #get the maximum unit price from the dataset
+    most_expensive_item = df[df['UnitPrice'] == max_price] #filter the dataframe to get the row with the maximum unit price
+
+    if not most_expensive_item.empty: #check if the dataframe is not empty
+        most_expensive_item = most_expensive_item.iloc[0] #get the first row of the dataframe
+        
+    else:
+        most_expensive_item = None #if the dataframe is empty, set the most expensive item to None
+    return most_expensive_item
+
+def the_most_shipped_country(): #find the country with the most shipped items
+    most_shipped_country = df['Country'].value_counts().idxmax() #get the country with the most shipped items
+
+    return most_shipped_country
+
+
+
+print(calculate_total_revenue(len(total_salary))) #print the total revenue for the dataset
+print(find_the_most_expensive_item()) #print the most expensive item in the dataset
+print(the_most_expensive_item()) #print the most expensive item in the dataset
+print(the_most_shipped_country()) #print the country with the most shipped items
